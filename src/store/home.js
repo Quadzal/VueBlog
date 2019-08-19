@@ -1,4 +1,4 @@
-import axios from "axios"
+﻿import axios from "axios"
 
 const store = {
 
@@ -58,31 +58,31 @@ const store = {
     actions:{
         
         getArticles(context){
-            return axios.get("http://www.localhost:8000/api/get/articles").then(resp => {context.commit("setArticles", resp.data.articles)})
+            return axios.get(window.location.origin + "/api/get/articles").then(resp => {context.commit("setArticles", resp.data.articles)})
         },
         
         getAuthorArticles(context, authorName){
-            return axios.get("http://www.localhost:8000/api/get/author/" + authorName).then(resp => context.commit("setAuthorArticles", resp.data.author))
+            return axios.get(window.location.origin + "/api/get/author/" + authorName).then(resp => context.commit("setAuthorArticles", resp.data.author))
         },
         
         getArticleDetail(context, slug){
-            return axios.get("http://www.localhost:8000/api/get/article/" + slug).then(resp => context.commit("setArticleDetail", resp.data.article))
+            return axios.get(window.location.origin + "/api/get/article/" + slug).then(resp => context.commit("setArticleDetail", resp.data.article))
         },
         
         addArticle(context, data){
-            return axios.post("http://www.localhost:8000/api/add/article", data).then(resp => context.commit("addArticle", resp.data.article))
+            return axios.post(window.location.origin + "/api/add/article", data).then(resp => context.commit("addArticle", resp.data.article))
         },
 
         addComment(context, data){
-            return axios.post("http://www.localhost:8000/api/add/comment", data).then(resp => context.commit("addComment", resp.data.comment));
+            return axios.post(window.location.origin + "/api/add/comment", data).then(resp => context.commit("addComment", resp.data.comment));
         },
         
         updateArticle(context, data) {
-            return axios.post("http://www.localhost:8000/api/update/article/" + data.slug, data).then(resp => context.commit("updateArticle", resp.data.article))
+            return axios.post(window.location.origin + "/api/update/article/" + data.slug, data).then(resp => context.commit("updateArticle", resp.data.article))
         },
 
         deleteArticle(context, slug){
-            return axios.post("http://www.localhost:8000/api/delete/article/" + slug).then(resp => context.commit("deleteArticle", resp.data.deleted_article))
+            return axios.post(window.location.origin + "/api/delete/article/" + slug).then(resp => context.commit("deleteArticle", resp.data.deleted_article))
         }
     }
 }

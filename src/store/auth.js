@@ -27,15 +27,15 @@ const auth = {
     actions:{
         
         login(context, data){
-            return axios.post("http://www.localhost:8000/api/auth/login", data).then(resp => context.commit("setToken", resp.data));
+            return axios.post(window.location.origin + "/api/auth/login", data).then(resp => context.commit("setToken", resp.data));
         },
 
         register(context, data){
-            return axios.post("http://www.localhost:8000/api/auth/register", data).then(resp => context.commit("setToken", resp.data))
+            return axios.post(window.location.origin + "/api/auth/register", data).then(resp => context.commit("setToken", resp.data))
         },
 
         checkToken(context, token){
-            return axios.post("http://www.localhost:8000/api/auth/check/token", {token:token});
+            return axios.post(window.location.origin + "/api/auth/check/token", {token:token});
         },
 
         logOut(context){

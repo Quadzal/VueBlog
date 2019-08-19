@@ -1,5 +1,4 @@
-<script>
-const BASE_URL = "http://www.localhost:8000/";
+﻿<script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import sidebar from "../../layouts/sidebar";
 export default {
@@ -25,7 +24,7 @@ export default {
     },
 
     beforeCreate(){
-        this.axios.get(BASE_URL+"api/get/authors").then(response => {
+        this.axios.get(window.location.origin + "/api/get/authors").then(response => {
             this.authors = response.data.filter(author => author.role == "admin");
         });
     },
