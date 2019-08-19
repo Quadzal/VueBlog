@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node app.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-basic-styles": "^11.1.3",
