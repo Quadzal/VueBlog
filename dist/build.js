@@ -44595,7 +44595,6 @@ var Component = normalizeComponent(
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_home_layout__ = __webpack_require__(88);
 
-var BASE_URL = "http://www.localhost:8000/";
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     created: function created() {
@@ -44817,7 +44816,7 @@ var BASE_URL = "http://www.localhost:8000";
     beforeCreate: function beforeCreate() {
         var _this2 = this;
 
-        this.axios.get(BASE_URL + "/api/get/authors").then(function (response) {
+        this.axios.get(location.origin + "/api/get/authors").then(function (response) {
             _this2.authors = response.data.filter(function (author) {
                 return author.role == "admin";
             });
@@ -58698,17 +58697,17 @@ var auth = {
 
     actions: {
         login: function login(context, data) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(BASE_URL + "/api/auth/login", data).then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(location.origin + "/api/auth/login", data).then(function (resp) {
                 return context.commit("setToken", resp.data);
             });
         },
         register: function register(context, data) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(BASE_URL + "/api/auth/register", data).then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(location.origin + "/api/auth/register", data).then(function (resp) {
                 return context.commit("setToken", resp.data);
             });
         },
         checkToken: function checkToken(context, token) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(BASE_URL + "/api/auth/check/token", { token: token });
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(location.origin + "/api/auth/check/token", { token: token });
         },
         logOut: function logOut(context) {
             context.commit("logOut");
@@ -58780,37 +58779,37 @@ var store = {
 
     actions: {
         getArticles: function getArticles(context) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(BASE_URL + "/api/get/articles").then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(location.origin + "/api/get/articles").then(function (resp) {
                 context.commit("setArticles", resp.data.articles);
             });
         },
         getAuthorArticles: function getAuthorArticles(context, authorName) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(BASE_URL + "/api/get/author/" + authorName).then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(location.origin + "/api/get/author/" + authorName).then(function (resp) {
                 return context.commit("setAuthorArticles", resp.data.author);
             });
         },
         getArticleDetail: function getArticleDetail(context, slug) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(BASE_URL + "/api/get/article/" + slug).then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(location.origin + "/api/get/article/" + slug).then(function (resp) {
                 return context.commit("setArticleDetail", resp.data.article);
             });
         },
         addArticle: function addArticle(context, data) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(BASE_URL + "/api/add/article", data).then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(location.origin + "/api/add/article", data).then(function (resp) {
                 return context.commit("addArticle", resp.data.article);
             });
         },
         addComment: function addComment(context, data) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(BASE_URL + "/api/add/comment", data).then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(location.origin + "/api/add/comment", data).then(function (resp) {
                 return context.commit("addComment", resp.data.comment);
             });
         },
         updateArticle: function updateArticle(context, data) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(BASE_URL + "/api/update/article/" + data.slug, data).then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(location.origin + "/api/update/article/" + data.slug, data).then(function (resp) {
                 return context.commit("updateArticle", resp.data.article);
             });
         },
         deleteArticle: function deleteArticle(context, slug) {
-            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(BASE_URL + "/api/delete/article/" + slug).then(function (resp) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(location.origin + "/api/delete/article/" + slug).then(function (resp) {
                 return context.commit("deleteArticle", resp.data.deleted_article);
             });
         }
@@ -59197,7 +59196,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_searchArticles_vue__ = __webpack_require__(238);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_74054005_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_searchArticles_vue__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_562064ae_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_searchArticles_vue__ = __webpack_require__(331);
 var normalizeComponent = __webpack_require__(11)
 /* script */
 
@@ -59214,7 +59213,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_searchArticles_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_74054005_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_searchArticles_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_562064ae_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_searchArticles_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -59477,7 +59476,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_add_article_vue__ = __webpack_require__(244);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a16a6882_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_add_article_vue__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_18917e02_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_add_article_vue__ = __webpack_require__(344);
 var normalizeComponent = __webpack_require__(11)
 /* script */
 
@@ -59494,7 +59493,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_add_article_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a16a6882_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_add_article_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_18917e02_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_add_article_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
