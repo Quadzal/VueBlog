@@ -52,6 +52,7 @@ export default {
 <style scoped>
     .background{
         height: 100%;
+        width: 100%;
         background-image: url("../../assets/background-user.jpg");
         background-repeat: no-repeat;
         background-size: cover;
