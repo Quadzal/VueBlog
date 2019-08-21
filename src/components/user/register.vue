@@ -70,7 +70,7 @@ export default {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
-        background-attachment: fixed;
+        position: fixed;
         display:flex;
         align-items: center;
     }
