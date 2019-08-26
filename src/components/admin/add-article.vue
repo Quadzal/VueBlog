@@ -1,5 +1,4 @@
 ﻿<script>
-const BASE_URL = "http://www.localhost:8000"
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
     data:() => {
@@ -31,9 +30,9 @@ export default {
     },
 
     beforeCreate(){
-        this.axios.get(BASE_URL + "/api/get/authors").then(response => {
+        this.axios.get(location.origin + "/api/get/authors").then(response => {
             this.authors = response.data.authors.filter(author => author.role == "admin");
-            this.axios.get(BASE_URL + "/api/get/categories")
+            this.axios.get(location.origin + "/api/get/categories")
             .then(response => {
                 this.categories = response.data.categories;
             })

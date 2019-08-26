@@ -1,5 +1,4 @@
 import axios from "axios"
-const BASE_URL = "http://www.localhost:8000"
 
 const auth = {
 
@@ -33,15 +32,15 @@ const auth = {
     actions:{
         
         login(context, data){
-            return axios.post(BASE_URL + "/api/auth/login", data).then(resp => context.commit("setToken", resp.data));
+            return axios.post(location.origin + "/api/auth/login", data).then(resp => context.commit("setToken", resp.data));
         },
 
         register(context, data){
-            return axios.post(BASE_URL + "/api/auth/register", data).then(resp => context.commit("setToken", resp.data))
+            return axios.post(location.origin + "/api/auth/register", data).then(resp => context.commit("setToken", resp.data))
         },
 
         checkToken(context, token){
-            return axios.post(BASE_URL + "/api/auth/check/token", {token:token});
+            return axios.post(location.origin + "/api/auth/check/token", {token:token});
         },
 
         logOut(context){

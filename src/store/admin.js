@@ -1,6 +1,5 @@
 import store from "../store";
 import axios from "axios"
-const BASE_URL = "http://www.localhost:8000"
 
 const admin = {
 
@@ -13,23 +12,23 @@ const admin = {
     },
     actions:{
         addArticle(context, data){
-            return axios.post(BASE_URL + "/api/add/article", data).then(resp => context.commit("addArticle", resp.data.article))
+            return axios.post(location.origin + "/api/add/article", data).then(resp => context.commit("addArticle", resp.data.article))
         },
 
         updateArticle(context, data) {
-            return axios.post(BASE_URL + "/api/update/article/" + data.slug, data)
+            return axios.post(location.origin + "/api/update/article/" + data.slug, data)
         },
 
         deleteArticle(context, slug){
-            return axios.post(BASE_URL + "/api/delete/article/" + slug)
+            return axios.post(location.origin + "/api/delete/article/" + slug)
         },
 
         addCategory(context, title){
-            return axios.post(BASE_URL + "/api/add/category", {title:title})
+            return axios.post(location.origin + "/api/add/category", {title:title})
         },
 
         updateCategory(context, data){
-            return axios.post(BASE_URL + "/api/update/category/" + data.slug, data);
+            return axios.post(location.origin + "/api/update/category/" + data.slug, data);
         }
     }
 }

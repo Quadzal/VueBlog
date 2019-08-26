@@ -1,6 +1,5 @@
 ﻿import axios from "axios"
 import store from "../store";
-const BASE_URL = "http://www.localhost:8000"
 const home = {
 
 
@@ -53,31 +52,31 @@ const home = {
     actions:{
         
         getArticles(context){
-            return axios.get(BASE_URL + "/api/get/articles").then(resp => {context.commit("setArticles", resp.data.articles)})
+            return axios.get(location.origin + "/api/get/articles").then(resp => {context.commit("setArticles", resp.data.articles)})
         },
 
         getCategory(context, slug){
-            return axios.get(BASE_URL + "/api/get/category/" + slug);
+            return axios.get(location.origin + "/api/get/category/" + slug);
         },
 
         getCategories(context){
-            return axios.get(BASE_URL + "/api/get/categories").then(resp => {context.commit("setCategories", resp.data.categories)});
+            return axios.get(location.origin + "/api/get/categories").then(resp => {context.commit("setCategories", resp.data.categories)});
         },
 
         getAuthorArticles(context, authorName){
-            return axios.get(BASE_URL + "/api/get/author/" + authorName).then(resp => context.commit("setAuthorArticles", resp.data.articles))
+            return axios.get(location.origin + "/api/get/author/" + authorName).then(resp => context.commit("setAuthorArticles", resp.data.articles))
         },
         
         getArticleDetail(context, slug){
-            return axios.get(BASE_URL + "/api/get/article/" + slug).then(resp => context.commit("setArticleDetail", resp.data.article))
+            return axios.get(location.origin + "/api/get/article/" + slug).then(resp => context.commit("setArticleDetail", resp.data.article))
         },
         
         addComment(context, data){
-            return axios.post(BASE_URL + "/api/add/comment/" + data.slug, data.comment).then(resp => context.commit("addComment", resp.data.comment));
+            return axios.post(location.origin + "/api/add/comment/" + data.slug, data.comment).then(resp => context.commit("addComment", resp.data.comment));
         },
         
         getCategoryWithArticles(context, slug){
-            return axios.get(BASE_URL + "/api/get/category/articles/" + slug);
+            return axios.get(location.origin + "/api/get/category/articles/" + slug);
         }
     }
 }
