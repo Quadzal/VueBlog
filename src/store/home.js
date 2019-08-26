@@ -52,31 +52,31 @@ const home = {
     actions:{
         
         getArticles(context){
-            return axios.get(location.origin + "/api/get/articles").then(resp => {context.commit("setArticles", resp.data.articles)})
+            return axios.get("/api/get/articles").then(resp => {context.commit("setArticles", resp.data.articles)})
         },
 
         getCategory(context, slug){
-            return axios.get(location.origin + "/api/get/category/" + slug);
+            return axios.get("/api/get/category/" + slug);
         },
 
         getCategories(context){
-            return axios.get(location.origin + "/api/get/categories").then(resp => {context.commit("setCategories", resp.data.categories)});
+            return axios.get("/api/get/categories").then(resp => {context.commit("setCategories", resp.data.categories)});
         },
 
         getAuthorArticles(context, authorName){
-            return axios.get(location.origin + "/api/get/author/" + authorName).then(resp => context.commit("setAuthorArticles", resp.data.articles))
+            return axios.get("/api/get/author/" + authorName).then(resp => context.commit("setAuthorArticles", resp.data.articles))
         },
         
         getArticleDetail(context, slug){
-            return axios.get(location.origin + "/api/get/article/" + slug).then(resp => context.commit("setArticleDetail", resp.data.article))
+            return axios.get("/api/get/article/" + slug).then(resp => context.commit("setArticleDetail", resp.data.article))
         },
         
         addComment(context, data){
-            return axios.post(location.origin + "/api/add/comment/" + data.slug, data.comment).then(resp => context.commit("addComment", resp.data.comment));
+            return axios.post("/api/add/comment/" + data.slug, data.comment).then(resp => context.commit("addComment", resp.data.comment));
         },
         
         getCategoryWithArticles(context, slug){
-            return axios.get(location.origin + "/api/get/category/articles/" + slug);
+            return axios.get("/api/get/category/articles/" + slug);
         }
     }
 }
