@@ -5,6 +5,9 @@ const auth = require("./server/routes/auth");
 const author = require("./server/routes/author");
 const category = require("./server/routes/category");
 const article = require("./server/routes/article");
+const history = require("connect-history-api-fallback");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 app.use(history());
 app.use(bodyParser.urlencoded({ extended: false }))
