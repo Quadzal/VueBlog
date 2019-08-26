@@ -1,5 +1,4 @@
 <script>
-const BASE_URL = "http://www.localhost:8000/"
 import HomeLayout from "../../layouts/home-layout"
 export default {
  

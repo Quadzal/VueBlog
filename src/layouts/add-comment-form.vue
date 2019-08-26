@@ -11,7 +11,7 @@
                             <b-media>
                                 <b-img slot="aside" blank blank-color="#ccc" width="64" alt="placeholder"></b-img>
             
-                                <h5 class="mt-0">@{{ articleComment.author.username }}</h5>
+                                <h5 class="mt-0">@{{ articleComment.author }}</h5>
                                 <p>{{ articleComment.content }}</p>
                             
                             </b-media>
@@ -26,23 +26,22 @@
 
 <script>
 export default {
-    props:["articleId", "authorId", "comments"],
+    props:["article_slug", "author", "comments"],
     data(){
         return {
             comment:{
                 content:"",
-                author:this.$props.authorId,
-                article:this.$props.articleId,
+                author:this.$props.author,
             },
         }
     },
     methods:{
         addComment(){
-            
-            this.$store.dispatch("addComment", this.comment)
+            this.$store.dispatch("addComment", {slug:this.$props.article_slug, comment:this.comment})
             .then(() => {
                 this.$props.comments.push(this.$store.state.home.addedComment);
             })
+            
         }
     }
 }

@@ -60,7 +60,7 @@ export default {
                                 
                             <hr>
                             <font-awesome-icon :icon="['far','user']" :style="{ color: 'black'}"/>
-                            <router-link :to="{name:'author', params:{authorName:GET_ARTICLE.author.username}}">@{{ GET_ARTICLE.author.username }}</router-link>
+                            <router-link :to="{name:'author', params:{authorName:GET_ARTICLE.author}}">@{{ GET_ARTICLE.author }}</router-link>
                             <hr>
                                 
                         </b-col>
@@ -73,7 +73,12 @@ export default {
             
             <div class="footer p-5"></div>
 
-            <add-comment-form v-if="GET_ARTICLE && IS_LOGIN" :articleId="GET_ARTICLE._id" :authorId="GET_USER._id" :comments="GET_ARTICLE.comments"></add-comment-form>
+            <add-comment-form 
+                v-if="GET_ARTICLE && IS_LOGIN" 
+                :article_slug="GET_ARTICLE.slug" 
+                :author="GET_USER.username" 
+                :comments="GET_ARTICLE.comments">
+            </add-comment-form>
         </div>
     </div>
 </template>

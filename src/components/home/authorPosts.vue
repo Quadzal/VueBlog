@@ -25,7 +25,7 @@ export default {
         },
 
         GET_AUTHOR_ARTICLES(){
-            return this.GET_ARTICLES.filter(article => article.author.username == this.$route.params.authorName);
+            return this.GET_ARTICLES.filter(article => article.author == this.$route.params.authorName);
         }
     },
 

@@ -1,17 +1,15 @@
 <script>
-import Spinner from "./spinner"
 export default {
-    props:["articles", "pagesNumber"],
+    props:["articles", "pagesNumber", "routeName"],
 
     methods:{
         linkGenerator(pageNum){
             return {
-                name:'home',
+                name:this.$props.routeName,
                 query:{page:pageNum}
             }
         }
     },
-    components:{"spinner":Spinner}
 }
 </script>
 
@@ -26,7 +24,7 @@ export default {
                         <router-link :to="{name:'article', params:{slug:article.slug}}">
                             <h5 class="display-4 mt-5">{{ article.title }}</h5>
                         </router-link>
-                        <router-link :to="{name:'author', params:{authorName:article.author.username}}">@{{ article.author.username }}</router-link>
+                        <router-link :to="{name:'author', params:{authorName:article.author}}">@{{ article.author }}</router-link>
 
                         <h5 class="text-secondary" v-html="article.content.slice(0,100)"></h5>
                         <router-link :to="{name:'article', params:{slug:article.slug}}">

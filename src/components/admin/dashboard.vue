@@ -1,16 +1,14 @@
 <script>
-import sidebar from "../../layouts/sidebar";
 export default {
-    components:{sidebar:sidebar}
 }
 </script>
 
 <template>
 <div>
     
-<sidebar>
+<admin-sidebar>
     <h1>Hello Admin.</h1>
-</sidebar>
+</admin-sidebar>
 </div>
 </template>
 

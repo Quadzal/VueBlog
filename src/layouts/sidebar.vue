@@ -7,10 +7,11 @@ export default {
 <template>
 <div>
     <div class="sidebar">
-        <router-link :to="{name:'dashboard'}">Home</router-link>
+        <router-link :to="{name:'home'}">Home</router-link>
         <router-link :to="{name:'listArticles'}">List Articles</router-link>
         <router-link :to="{name:'addArticle'}">Add Article</router-link>
-        <a href="#about">About</a>
+        <router-link :to="{name:'addCategory'}">Add Category</router-link>
+        <router-link :to="{name:'listCategories'}">List Categories</router-link>
     </div>
     <div class="content">
         <slot></slot>
