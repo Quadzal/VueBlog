@@ -1,24 +1,7 @@
-<template>
-    <div>
-        <navbar></navbar>
-        <error error="Author Articles Not Found..." v-if="GET_AUTHOR_ARTICLES.length == 0"></error>
-        <home-layout :articles="GET_AUTHOR_ARTICLES"></home-layout>
-    </div>
-    
-</template>
-
 <script>
 import HomeLayout from "../../layouts/home-layout"
-import ErrorLayout from "../../layouts/error";
 export default {
 
-    created(){
-        if (this.GET_ARTICLES.length == 0) {
-            this.$store.dispatch("getArticles")
-        }
-        
-    },
-    
     computed:{
         GET_ARTICLES(){
             return this.$store.getters.GET_ARTICLES
@@ -29,7 +12,16 @@ export default {
         }
     },
 
-    components:{"home-layout":HomeLayout, "error":ErrorLayout}
+    components:{"home-layout":HomeLayout}
     
 }
 </script>
+
+<template>
+    <div>
+        <navbar></navbar>
+        <home-layout :articles="GET_AUTHOR_ARTICLES"></home-layout>
+    </div>
+    
+</template>
+

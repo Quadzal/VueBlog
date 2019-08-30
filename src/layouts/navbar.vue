@@ -5,6 +5,12 @@ export default {
             search_query:""
         }
     },
+    created(){
+        if (Object.keys(this.GET_CATEGORIES).length == 0) {
+            this.$store.dispatch("getCategories");
+        }
+        
+    },
     computed:{
         IS_LOGIN(){
             return Object.keys(this.GET_USER).length !== 0 ? true : false
@@ -15,7 +21,6 @@ export default {
         },
 
         GET_CATEGORIES(){
-            this.$store.dispatch("getCategories");
             return this.$store.state.home.categories;
         },
         UsernameOrFullName(){
@@ -30,8 +35,8 @@ export default {
 <template>
     <div>
         
-    <b-navbar toggleable="lg" type="dark" variant="info">
-        <router-link :to="{name:'home'}"><b-navbar-brand>Home</b-navbar-brand></router-link>
+    <b-navbar toggleable="lg" class="custom-navbar">
+        <router-link :to="{name:'home'}"><b-navbar-brand class="text-white">Home</b-navbar-brand></router-link>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -40,9 +45,9 @@ export default {
             <b-navbar-nav class="ml-auto">
                 
                 <b-nav-form>
-                    <b-form-input size="sm" class="mr-sm-2" name="q" v-model="search_query" id="search" placeholder="Search"></b-form-input>
+                    <b-form-input size="sm" class="mr-sm-2 search-input" name="q" v-model="search_query" placeholder="Search For Title..."></b-form-input>
                     <router-link :to="{name:'search', query:{q:search_query}}">
-                        <b-button size="sm" class="my-2 my-sm-0" id="search_btn">Search</b-button>
+                        <b-button size="sm" class="my-2 my-sm-0 custom-button" id="search_btn">Search</b-button>
                     </router-link>
                     
                 </b-nav-form>
@@ -61,12 +66,13 @@ export default {
                     <hr>
                     <b-dropdown-item :to="{name:'logout'}">LogOut</b-dropdown-item>
                 </b-nav-item-dropdown>
-                
-                <b-navbar-nav right v-if="!IS_LOGIN">
+                <div>
+                <b-navbar-nav right v-if="!IS_LOGIN" >
                     <!-- Using 'button-content' slot -->
-                    <b-nav-item :to="{name:'login'}">Login</b-nav-item>
-                    <b-nav-item :to="{name:'register'}">Register</b-nav-item>
+                    <b-nav-item :to="{name:'login'}"><em>Login</em></b-nav-item>
+                    <b-nav-item :to="{name:'register'}"><em>Register</em></b-nav-item>
                 </b-navbar-nav>
+                </div>
             </b-navbar-nav>
         </b-collapse>
   </b-navbar>
@@ -74,5 +80,57 @@ export default {
 </template>
 
 
+<style scoped>
+    .custom-navbar{
+        background-color:#2b4d52;
+    }
 
+    em{
+        color: #ececec;
+    }
 
+    em:hover{
+        color:#c7bdbd
+    }
+
+    .custom-button{
+        background: transparent;
+        border-color: #3c7179;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        
+    }
+
+    .search-input{
+        background: transparent;
+        color: white;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        box-shadow: none;
+        border-color: #3c7179;
+    }
+
+    .search-input::placeholder{
+        color: white;
+    }
+
+    .search-input:hover{
+        border-color: #ececec;
+    }
+
+    .custom-button:hover{
+        background:transparent;
+        border-color: #ececec;
+        border-width: 1.8px;
+        color: #c7bdbd;
+    }
+    .custom-button:focus{
+        background: transparent;
+        box-shadow: none;
+        border-top: none;
+        border-left: none;
+        
+    }
+</style>    

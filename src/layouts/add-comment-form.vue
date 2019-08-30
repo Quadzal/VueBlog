@@ -3,8 +3,9 @@
         <b-container>
             <b-row>
                 <b-col md="12" class="mt-3">
-                    <b-textarea rows="3" cols="100" v-model="comment.content"  class="bg-light"/>
-                    <b-button @click="addComment" class="w-50 mb-3" variant="success">Yorumu Gönder</b-button>
+                    <label>Yorumunuz:</label>
+                    <b-textarea rows="3" v-model="comment.content"  class="bg-light w-50"/>
+                    <b-button @click="addComment" class="w-10 mb-3" variant="danger">Gönder</b-button>
                     <div v-if="comments.length > 0" class="mt-5">
                         <div v-for="articleComment in comments" :key="articleComment.created_date">
                         <b-card class="bg-light mb-3">

@@ -1,24 +1,13 @@
-<template>
-    <div>
-        <navbar></navbar>
-        <home-layout :articles="articles" :pagesNumber="10" routeName="category"></home-layout>
-    </div>
-    
-</template>
-
 <script>
 import HomeLayout from "../../layouts/home-layout"
 export default {
+    computed:{
+        GET_ARTICLES(){
+            return this.$store.getters.GET_ARTICLES
+        },
 
-    beforeCreate(){
-        this.$store.dispatch("getCategoryWithArticles", this.$route.params.slug)
-        .then((response)=> {
-            this.articles = response.data.articles;
-        })
-    },
-    data(){
-        return {
-            articles:[]
+        GET_CATEGORY_ARTICLES(){
+            return this.GET_ARTICLES.filter(article => article.category_slug == this.$route.params.slug);
         }
     },
 
@@ -26,3 +15,14 @@ export default {
     
 }
 </script>
+
+<template>
+    <div>
+        <navbar></navbar>
+        
+        <home-layout :articles="GET_CATEGORY_ARTICLES"></home-layout>
+
+    </div>
+    
+</template>
+

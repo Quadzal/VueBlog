@@ -6,14 +6,12 @@ export default {
             fields:["_id", "title", "author", "update_button", "delete_button"],
             errorMessage:"",
             search:"",
-            articles:[]
         }
     },
 
     methods:{
         deleteArticle(slug){
             this.$store.dispatch("deleteArticle", slug)
-            .then(() => location.reload())
             .catch((err) => {
                 this.errorMessage = "Makale Silinemedi..."
             });
@@ -21,17 +19,15 @@ export default {
     },
 
     computed:{
+        articles(){
+            return this.$store.state.home.articles
+        },
 
         GET_SEARCH_ARTICLES(){
-            return this.articles = this.$store.state.home.articles.filter(article => article.title.toLowerCase().includes(this.search.toLowerCase()));
+            return this.articles.filter(article => article.title.toLowerCase().includes(this.search.toLowerCase()));
         }
     },
 
-    beforeCreate(){
-        this.$store.dispatch("getArticles").then(() => {
-            this.articles = this.$store.state.home.articles;
-        })
-    },
     components:{sidebar:sidebar}
 }
 </script>

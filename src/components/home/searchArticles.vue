@@ -1,23 +1,15 @@
 <script>
 import HomeLayout from "../../layouts/home-layout"
 export default {
- 
-    created(){
-        if (this.GET_ARTICLES.length == 0) {
-            this.$store.dispatch("getArticles")
-        }
-        
-    },
 
     computed:{
-        SEARCH_ARTICLES(){
-            return this.GET_ARTICLES.filter(article => article.slug.toLowerCase().includes(this.$route.query.q.toLowerCase()));
+        GET_FILTERED_ARTICLES(){
+            let filtered_articles = this.$store.getters.GET_ARTICLES.filter(article => article.slug.toLowerCase().includes(this.$route.query.q.toLowerCase()))
+            return filtered_articles
         },
 
-        GET_ARTICLES(){
-            return this.$store.getters.GET_ARTICLES
-        }
     },
+
     components:{"home-layout": HomeLayout}
 }
 </script>
@@ -25,7 +17,8 @@ export default {
 <template>
     <div>
         <navbar></navbar>
-        <home-layout :articles="SEARCH_ARTICLES"></home-layout>
+        <home-layout :articles="GET_FILTERED_ARTICLES"></home-layout>
+        
     </div>
     
 </template>
