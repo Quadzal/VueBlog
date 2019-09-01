@@ -8,9 +8,7 @@ const article = require("./server/routes/article");
 const history = require("connect-history-api-fallback");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const compression = require("compression");
 
-app.use(compression());
 app.use(history());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -19,6 +17,12 @@ app.use(cors());
 app.use(express.static(__dirname));
 
 database.connect_mongodb();
+
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'public, max-age=31557600');
+    res.set("Content-Encoding", "gzip");
+    next();
+})
 
 app.get("/", (req, res) => {
     return res.sendFile("index.html");
