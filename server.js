@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.set("json spaces", 4)
 app.use(cors());
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, {etag:false}));
 
 database.connect_mongodb();
 
