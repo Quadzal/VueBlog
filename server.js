@@ -8,7 +8,9 @@ const article = require("./server/routes/article");
 const history = require("connect-history-api-fallback");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const compression = require("compression");
 
+app.use(compression());
 app.use(history());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
