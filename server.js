@@ -26,6 +26,4 @@ app.get("/", (req, res) => {
 
 app.use("/api", [author, category, article]);
 app.use("/api/auth", auth);
-app.listen(process.env.PORT || 8000, () => {
-    console.log("http://localhost:8000/");
-})
+app.listen(process.env.PORT || 8000)
